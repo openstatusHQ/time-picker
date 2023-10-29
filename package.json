@@ -2,26 +2,52 @@
   "name": "time-picker",
   "version": "0.1.0",
   "private": true,
+  "author": "mxkaske",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openstatusHQ/time-picker"
+  },
+  "keywords": ["react", "nextjs", "tailwindcss", "typescript", "shadcn", "time-picker"],
+  "license": "ISC",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tsc": "tsc"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
+    "lucide-react": "^0.290.0",
+    "next": "^13",
+    "next-contentlayer": "^0.3.4",
+    "next-themes": "^0.2.1",
     "react": "^18",
+    "react-day-picker": "^8.9.1",
     "react-dom": "^18",
-    "next": "14.0.0"
+    "rehype-pretty-code": "^0.10.2",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "^13",
     "postcss": "^8",
     "tailwindcss": "^3",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.0"
+    "typescript": "^5"
   }
 }
