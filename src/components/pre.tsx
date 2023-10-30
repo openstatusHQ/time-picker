@@ -1,5 +1,5 @@
 import React from "react";
-import { Clipboard, ClipboardCheck } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Pre({
@@ -33,14 +33,13 @@ export default function Pre({
   return (
     <div className="relative overflow-hidden">
       <button
-        className={`absolute top-4 right-4 rounded-md border border-transparent p-2 hover:border-border text-muted-foreground hover:text-foreground`}
+        className={cn(
+          `absolute top-4 right-4 rounded-md border border-transparent p-2 hover:border-border text-muted-foreground hover:text-foreground`,
+          copied && "text-foreground"
+        )}
         onClick={onClick}
       >
-        {!copied ? (
-          <Clipboard className="h-5 w-5" />
-        ) : (
-          <ClipboardCheck className="h-5 w-5" />
-        )}
+        {!copied ? <Copy className="h-4 w-4" /> : <Check className="h-4 w-4" />}
       </button>
       <pre
         ref={ref}

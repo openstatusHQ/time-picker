@@ -1,4 +1,4 @@
-import { TimePickerWrapper } from "@/time-picker/time-picker-wrapper";
+import { TimePickerWrapper } from "@/components/time-picker/time-picker-wrapper";
 
 export function OGPicture() {
   return (

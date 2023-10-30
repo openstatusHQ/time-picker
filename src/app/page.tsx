@@ -1,7 +1,7 @@
 import { allSnippets } from "contentlayer/generated";
 import { Snippet } from "@/components/snippet";
-import { DatePickerDemo } from "@/time-picker/date-time-picker-demo";
-import { TimePickerWrapper } from "@/time-picker/time-picker-wrapper";
+import { DatePickerDemo } from "@/components/time-picker/date-time-picker-demo";
+import { TimePickerWrapper } from "@/components/time-picker/time-picker-wrapper";
 import {
   Accordion,
   AccordionContent,
@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ModeToggle } from "@/components/theme/toggle-mode";
-import { Github, Twitter } from "lucide-react";
+import { Github, Globe, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const snippets = allSnippets.sort((a, b) => a.order - b.order);
@@ -17,10 +17,10 @@ const snippets = allSnippets.sort((a, b) => a.order - b.order);
 export default function Home() {
   return (
     <main className="flex min-h-screen relative flex-col items-center justify-between p-4 sm:p-16">
-      <div className="sticky top-0 flex w-full max-w-3xl mx-auto">
-        <div className="absolute top-2 -right-12 flex flex-col items-center">
+      <div className="sm:sticky top-0 flex w-full max-w-3xl mx-auto">
+        <div className="sm:absolute sm:top-2 sm:-right-12 gap-2 p-1 flex-1 flex sm:flex-col justify-center items-center">
           <ModeToggle />
-          <Button variant="ghost" size="sm" className="w-9 px-0 mt-2" asChild>
+          <Button variant="ghost" size="sm" className="w-9 px-0" asChild>
             <a
               href="https://github.com/openstatusHQ/time-picker"
               target="_blank"
@@ -28,9 +28,14 @@ export default function Home() {
               <Github />
             </a>
           </Button>
-          <Button variant="ghost" size="sm" className="w-9 px-0 mt-2" asChild>
+          <Button variant="ghost" size="sm" className="w-9 px-0" asChild>
             <a href="https://twitter.com/openstatusHQ" target="_blank">
               <Twitter />
+            </a>
+          </Button>
+          <Button variant="ghost" size="sm" className="w-9 px-0" asChild>
+            <a href="https://openstatus.dev" target="_blank">
+              <Globe />
             </a>
           </Button>
         </div>
@@ -39,8 +44,8 @@ export default function Home() {
         <div className="grid gap-4 text-center mx-auto max-w-2xl mt-12">
           <h1 className="text-3xl font-cal">Time Picker</h1>
           <p className="text-muted-foreground">
-            A <code>DateTimePickerInput</code> component built with React and
-            Shadcn UI.
+            A <code>{`<TimePickerInput />`}</code> component built with React
+            and Shadcn UI.
           </p>
           <div>
             <DatePickerDemo />

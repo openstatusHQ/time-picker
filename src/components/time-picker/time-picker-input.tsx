@@ -29,7 +29,7 @@ const TimePickerInput = React.forwardRef<
       value,
       id,
       name,
-      date = new Date(),
+      date = new Date(new Date().setHours(0, 0, 0, 0)),
       setDate,
       onChange,
       onKeyDown,
@@ -70,7 +70,6 @@ const TimePickerInput = React.forwardRef<
         const step = e.key === "ArrowUp" ? 1 : -1;
         const newValue = getArrowByType(calculatedValue, step, picker);
         if (flag) setFlag(false);
-        console.log(newValue);
         const tempDate = new Date(date);
         setDate(setDateByType(tempDate, newValue, picker));
       }
