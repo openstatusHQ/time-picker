@@ -7,7 +7,14 @@
     "type": "git",
     "url": "https://github.com/openstatusHQ/time-picker"
   },
-  "keywords": ["react", "nextjs", "tailwindcss", "typescript", "shadcn", "time-picker"],
+  "keywords": [
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "typescript",
+    "shadcn",
+    "time-picker"
+  ],
   "license": "ISC",
   "scripts": {
     "dev": "next dev",
@@ -31,6 +38,7 @@
     "lucide-react": "^0.290.0",
     "next": "^13",
     "next-contentlayer": "^0.3.4",
+    "next-plausible": "^3.11.3",
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-day-picker": "^8.9.1",

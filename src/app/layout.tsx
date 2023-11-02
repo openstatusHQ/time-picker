@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Background from "./_components/background";
 import localFont from "next/font/local";
+import PlausibleProvider from "next-plausible";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,11 +38,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${myFont.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Background>{children}</Background>
-        </ThemeProvider>
-      </body>
+      <PlausibleProvider domain="time.openstatus.dev">
+        <body className={`${inter.className} ${myFont.variable}`}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Background>{children}</Background>
+          </ThemeProvider>
+        </body>
+      </PlausibleProvider>
     </html>
   );
 }
