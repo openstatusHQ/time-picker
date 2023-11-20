@@ -129,7 +129,7 @@ export default function Home() {
             <Accordion
               type="single"
               collapsible
-              defaultValue={snippets[0].file}
+              // defaultValue={snippets[0].file}
             >
               {snippets.map((snippet) => (
                 <AccordionItem key={snippet.slug} value={snippet.file}>
