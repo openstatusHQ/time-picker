@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { format } from "date-fns";
+import { add, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -17,6 +17,22 @@ import { TimePicker12Demo } from "./time-picker-12hour-demo";
 
 export function DatePickerDemo() {
   const [date, setDate] = React.useState<Date>();
+
+  /**
+   * carry over the current time when a user clicks a new day
+   * instead of resetting to 00:00
+   */
+  const handleSelect = (newDay: Date | undefined) => {
+    if (!newDay) return;
+    if (!date) {
+      setDate(newDay);
+      return;
+    }
+    const diff = newDay.getTime() - date.getTime();
+    const diffInDays = diff / (1000 * 60 * 60 * 24);
+    const newDateFull = add(date, { days: Math.ceil(diffInDays) });
+    setDate(newDateFull);
+  };
 
   return (
     <Popover>
@@ -36,7 +52,7 @@ export function DatePickerDemo() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={(d) => handleSelect(d)}
           initialFocus
         />
         <div className="p-3 border-t border-border">
