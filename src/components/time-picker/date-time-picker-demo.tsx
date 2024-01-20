@@ -40,8 +40,8 @@ export function DatePickerDemo() {
           initialFocus
         />
         <div className="p-3 border-t border-border">
-          {/* <TimePickerDemo setDate={setDate} date={date} /> */}
-          <TimePicker12Demo date={date} setDate={setDate} />
+          <TimePickerDemo setDate={setDate} date={date} />
+          {/* <TimePicker12Demo date={date} setDate={setDate} /> */}
         </div>
       </PopoverContent>
     </Popover>
