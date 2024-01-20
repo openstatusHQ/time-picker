@@ -13,6 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { TimePickerDemo } from "./time-picker-demo";
+import { TimePicker12Demo } from "./time-picker-12hour-demo";
 
 export function DatePickerDemo() {
   const [date, setDate] = React.useState<Date>();
@@ -39,7 +40,8 @@ export function DatePickerDemo() {
           initialFocus
         />
         <div className="p-3 border-t border-border">
-          <TimePickerDemo setDate={setDate} date={date} />
+          {/* <TimePickerDemo setDate={setDate} date={date} /> */}
+          <TimePicker12Demo date={date} setDate={setDate} />
         </div>
       </PopoverContent>
     </Popover>

@@ -3,10 +3,12 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import React from "react";
 import {
+  Period,
   TimePickerType,
   getArrowByType,
   getDateByType,
   setDateByType,
+  display12HourValue,
 } from "./time-picker-utils";
 
 export interface TimePickerInputProps
@@ -14,6 +16,7 @@ export interface TimePickerInputProps
   picker: TimePickerType;
   date: Date | undefined;
   setDate: (date: Date | undefined) => void;
+  period?: Period;
   onRightFocus?: () => void;
   onLeftFocus?: () => void;
 }
@@ -34,6 +37,7 @@ const TimePickerInput = React.forwardRef<
       onChange,
       onKeyDown,
       picker,
+      period,
       onLeftFocus,
       onRightFocus,
       ...props
@@ -56,10 +60,12 @@ const TimePickerInput = React.forwardRef<
       }
     }, [flag]);
 
-    const calculatedValue = React.useMemo(
-      () => getDateByType(date, picker),
-      [date, picker]
-    );
+    const calculatedValue = React.useMemo(() => {
+      if (picker === "12hours") {
+        return display12HourValue(date.getHours());
+      }
+      return getDateByType(date, picker);
+    }, [date, picker ]);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Tab") return;
@@ -71,7 +77,8 @@ const TimePickerInput = React.forwardRef<
         const newValue = getArrowByType(calculatedValue, step, picker);
         if (flag) setFlag(false);
         const tempDate = new Date(date);
-        setDate(setDateByType(tempDate, newValue, picker));
+        setDate(setDateByType(tempDate, newValue, picker, period));
+        console.log(date);
       }
       if (e.key >= "0" && e.key <= "9") {
         const newValue = !flag
@@ -80,7 +87,7 @@ const TimePickerInput = React.forwardRef<
         if (flag) onRightFocus?.();
         setFlag((prev) => !prev);
         const tempDate = new Date(date);
-        setDate(setDateByType(tempDate, newValue, picker));
+        setDate(setDateByType(tempDate, newValue, picker, period));
       }
     };
 

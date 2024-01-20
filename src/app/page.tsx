@@ -11,6 +11,7 @@ import {
 import { ModeToggle } from "@/components/theme/toggle-mode";
 import { Github, Globe, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TimePicker12HourWrapper } from "@/components/time-picker/time-picker-12hour-wrapper";
 
 const snippets = allSnippets.sort((a, b) => a.order - b.order);
 
@@ -53,11 +54,11 @@ export default function Home() {
         </div>
         <div className="flex-1 min-h-full flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 pb-4">
-            {/* <DatePickerDemo /> */}
             <div className="grid pb-4 md:pb-0 md:pr-4">
               <div className="flex flex-col gap-3 pb-4 border-b border-border">
                 <h3 className="text-xl font-cal">Demo</h3>
                 <TimePickerWrapper />
+                <TimePicker12HourWrapper />
               </div>
               <div className="pt-4 flex flex-col gap-3">
                 <ul className="list-disc list-outside ml-5 marker:text-muted-foreground space-y-2 text-sm">
@@ -91,7 +92,15 @@ export default function Home() {
                   >
                     Input
                   </a>{" "}
-                  component
+                  component (twelve-hour clocks also need the{" "}
+                  <a
+                    href="https://ui.shadcn.com/docs/components/select"
+                    className="font-mono underline hover:no-underline"
+                    target="_blank"
+                  >
+                    Select
+                  </a>{" "}
+                  component)
                 </li>
                 <li>
                   Copy & paste{" "}
