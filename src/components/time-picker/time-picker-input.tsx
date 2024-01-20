@@ -78,7 +78,6 @@ const TimePickerInput = React.forwardRef<
         if (flag) setFlag(false);
         const tempDate = new Date(date);
         setDate(setDateByType(tempDate, newValue, picker, period));
-        console.log(date);
       }
       if (e.key >= "0" && e.key <= "9") {
         const newValue = !flag
