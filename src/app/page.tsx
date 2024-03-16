@@ -1,6 +1,5 @@
 import { allSnippets } from "contentlayer/generated";
 import { Snippet } from "@/components/snippet";
-import { DatePickerDemo } from "@/components/time-picker/date-time-picker-demo";
 import { TimePickerWrapper } from "@/components/time-picker/time-picker-wrapper";
 import {
   Accordion,
@@ -12,6 +11,7 @@ import { ModeToggle } from "@/components/theme/toggle-mode";
 import { Github, Globe, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TimePicker12HourWrapper } from "@/components/time-picker/time-picker-12hour-wrapper";
+import { DateTimePickerForm } from "@/components/time-picker/date-time-picker-form";
 
 const snippets = allSnippets.sort((a, b) => a.order - b.order);
 
@@ -49,7 +49,7 @@ export default function Home() {
             and Shadcn UI.
           </p>
           <div>
-            <DatePickerDemo />
+            <DateTimePickerForm />
           </div>
         </div>
         <div className="flex-1 min-h-full flex flex-col">
