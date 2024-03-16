@@ -8,7 +8,6 @@ import {
   getArrowByType,
   getDateByType,
   setDateByType,
-  display12HourValue,
 } from "./time-picker-utils";
 
 export interface TimePickerInputProps
@@ -61,11 +60,19 @@ const TimePickerInput = React.forwardRef<
     }, [flag]);
 
     const calculatedValue = React.useMemo(() => {
-      if (picker === "12hours") {
-        return display12HourValue(date.getHours());
-      }
       return getDateByType(date, picker);
-    }, [date, picker ]);
+    }, [date, picker]);
+
+    const calculateNewValue = (key: string) => {
+      /*
+       * If picker is '12hours' and the first digit is 0, then the second digit is automatically set to 1.
+       * The second entered digit will break the condition and the value will be set to 10-12.
+       */
+      if (picker === "12hours" && flag && calculatedValue.slice(0, 1) === "0") {
+        return "0" + key;
+      }
+      return !flag ? "0" + key : calculatedValue.slice(1, 2) + key;
+    };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Tab") return;
@@ -80,9 +87,7 @@ const TimePickerInput = React.forwardRef<
         setDate(setDateByType(tempDate, newValue, picker, period));
       }
       if (e.key >= "0" && e.key <= "9") {
-        const newValue = !flag
-          ? "0" + e.key
-          : calculatedValue.slice(1, 2) + e.key;
+        const newValue = calculateNewValue(e.key);
         if (flag) onRightFocus?.();
         setFlag((prev) => !prev);
         const tempDate = new Date(date);
